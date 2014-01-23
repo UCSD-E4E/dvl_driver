@@ -1,4 +1,4 @@
-dvl_driver
+DVL Driver
 ==========
 
-Port of Rock(Robot Construction Kit) dvl_driver to ros
+The basic DVL Driver of Rock(Robot Construction Kit) has been ported to work directly with ROS
