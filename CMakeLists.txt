@@ -5,7 +5,7 @@ project(dvl_driver)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED
-			COMPONENTS
+			COMPONENTS cmake_modules
 			roscpp)
 
 find_package(Boost REQUIRED COMPONENTS thread)
