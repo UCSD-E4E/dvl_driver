@@ -6,7 +6,7 @@ project(dvl_driver)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED
 			COMPONENTS cmake_modules
-			roscpp)
+			roscpp message_generation std_msgs rospy)
 
 find_package(Boost REQUIRED COMPONENTS thread)
 find_package(Eigen REQUIRED COMPONENTS thread)
@@ -53,11 +53,11 @@ include_directories(
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
+ add_message_files(
+   FILES
+    DVL.msg
 #   Message2.msg
-# )
+ )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -74,10 +74,10 @@ include_directories(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+ generate_messages(
+  DEPENDENCIES
+   std_msgs  # Or other packages containing msgs
+ )
 
 ###################################
 ## catkin specific configuration ##
@@ -91,7 +91,7 @@ include_directories(
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES dvl_driver
-#  CATKIN_DEPENDS other_catkin_pkg
+  CATKIN_DEPENDS message_runtime
 #  DEPENDS system_lib
 )
 
@@ -168,7 +168,7 @@ catkin_package(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 add_executable(teledyne_exp_dvl_node src/Timeout.cpp src/Exceptions.cpp src/IOStream.cpp src/IOListener.cpp src/BaseDriver.cpp src/PD0Parser.cpp src/Driver.cpp src/Main.cpp)
-target_link_libraries(teledyne_exp_dvl_node 
+target_link_libraries(teledyne_exp_dvl_node
 	${catkin_LIBRARIES}
 	${Boost_LIBRARIES}
 	${Eigen_LIBRARIES})
