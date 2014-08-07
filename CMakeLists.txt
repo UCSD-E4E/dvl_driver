@@ -113,7 +113,7 @@ catkin_package(
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-# add_dependencies(dvl_driver_node dvl_driver_generate_messages_cpp)
+#add_dependencies(dvl_driver dvl_driver_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(dvl_driver_node
@@ -167,8 +167,11 @@ catkin_package(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
 add_executable(teledyne_exp_dvl_node src/Timeout.cpp src/Exceptions.cpp src/IOStream.cpp src/IOListener.cpp src/BaseDriver.cpp src/PD0Parser.cpp src/Driver.cpp src/Main.cpp)
 target_link_libraries(teledyne_exp_dvl_node
 	${catkin_LIBRARIES}
 	${Boost_LIBRARIES}
 	${Eigen_LIBRARIES})
+
+add_dependencies(teledyne_exp_dvl_node ${PROJECT_NAME}_generate_messages_cpp)
